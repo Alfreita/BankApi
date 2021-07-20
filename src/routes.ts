@@ -1,15 +1,17 @@
-import express from "express";
+import express, { Request, Response, Router } from "express";
+import { login } from "./controllers/user";
+import { auth, verify } from "./security/indexJWT";
 
-const Routes = express.Router();
+const router = Router();
 
 //User path
-Routes.post("/create");
-Routes.post("/dologin");
-Routes.post("/dologout");
+router.route("/create").post((req: Request, res: Response) => login(req, res));
+router.route("/dologin").post((req: Request, res: Response) => login(req, res));
+router.route("/dologout").post((req: Request, res: Response) => login(req, res));
 
 //Bank features
-Routes.post("/bank/deposit");
-Routes.post("/bank/getcash");
-Routes.post("/bank/getaccount");
+router.post("/bank/deposit");
+router.post("/bank/getcash");
+router.post("/bank/getaccount");
 
-export default Routes;
+export default router;

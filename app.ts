@@ -5,8 +5,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/bankAPI", routes);
+app.use("/bankapi", routes);
 
 app.listen(3000, () => {
   console.log("Bank api open");
 });
+
+export default app;
