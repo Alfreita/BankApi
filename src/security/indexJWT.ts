@@ -8,12 +8,13 @@ if (!secret) {
   throw new Error("env undefined");
 }
 const auth = (email: string) => {
-  const token = Jwt.sign({ email }, secret);
+  const token = Jwt.sign({ email }, secret, {
+    expiresIn: 100, // expires in 5min
+  });
   return token;
 };
 const verify = (req: Request, res: Response, next: any) => {
   const token = req.headers["x-access-token"];
-  console.log(token);
   if (!token)
     return res.status(401).json({ auth: false, message: "No token provided." });
 

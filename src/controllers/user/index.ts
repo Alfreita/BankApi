@@ -12,9 +12,7 @@ const login = (req: Request, res: Response) => {
   return res.status(200).json({ auth: true, token: token });
 };
 const logout = (req: Request, res: Response) => {
-  const { email, password } = req.body;
-  const token = auth(email);
-  return res.status(200).json({ auth: true, token: token });
+  return res.status(200).json({ auth: false });
 };
 
 export { create, login, logout };

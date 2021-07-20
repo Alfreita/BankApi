@@ -6,7 +6,7 @@ const router = Router();
 
 //User path
 router.route("/create").post((req: Request, res: Response) => create(req, res));
-router.route("/dologin").post(verify,(req: Request, res: Response) => login(req, res));
+router.route("/dologin").post((req: Request, res: Response) => login(req, res));
 router.route("/dologout").post(verify,(req: Request, res: Response) => logout(req, res));
 
 //Bank features
