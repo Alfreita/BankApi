@@ -18,13 +18,15 @@ const verify = (req: Request, res: Response, next: any) => {
   if (!token)
     return res.status(401).json({ auth: false, message: "No token provided." });
 
-  Jwt.verify(token, secret, function (err, decoded) {
+  Jwt.verify(token, secret, function (err, decoded: any) {
     if (err)
       return res
         .status(500)
         .json({ auth: false, message: "Failed to authenticate token." });
 
     // se tudo estiver ok, salva no request para uso posterior
+    console.log(decoded.email);
+    req.userEmail = decoded.email;
     next();
   });
 };
