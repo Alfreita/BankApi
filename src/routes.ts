@@ -1,5 +1,5 @@
 import express, { Request, Response, Router } from "express";
-import { login,create,logout } from "./controllers/user";
+import { login,create,logout } from "./presentation/routers/login";
 import { auth, verify } from "./security/indexJWT";
 
 const router = Router();

@@ -1,6 +1,7 @@
 import Jwt from "jsonwebtoken";
 import dotEnv from "dotenv";
 import { Request, Response } from "express";
+import HttpResponse from "../presentation/helpers/http-response";
 
 dotEnv.config();
 const secret = process.env.SECRET;
@@ -19,10 +20,7 @@ const verify = (req: Request, res: Response, next: any) => {
     return res.status(401).json({ auth: false, message: "No token provided." });
 
   Jwt.verify(token, secret, function (err, decoded: any) {
-    if (err)
-      return res
-        .status(500)
-        .json({ auth: false, message: "Failed to authenticate token." });
+    if (err) return HttpResponse.unauthorizeError();
 
     // se tudo estiver ok, salva no request para uso posterior
     console.log(decoded.email);
