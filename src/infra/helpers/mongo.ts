@@ -28,7 +28,7 @@ const ConnectDB = async () => {
   }
 };
 
-export const InsertUser = async (user: UserInterface) => {
+export const InsertUser = async (user: any) => {
   try {
     const connected = await ConnectDB();
     await connected.insertOne(user);

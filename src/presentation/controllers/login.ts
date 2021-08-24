@@ -1,8 +1,9 @@
+import AuthUseCase from "../../domain/useCase/authUseCase";
 import HttpResponse from "../helpers/http-response";
 
 class Login {
-  authUseCase: any;
-  constructor(authUseCase: any) {
+  authUseCase: AuthUseCase;
+  constructor(authUseCase: AuthUseCase) {
     this.authUseCase = authUseCase;
   }
   handle = async (httpRequest: any) => {
@@ -16,26 +17,4 @@ class Login {
     }
   };
 }
-// const create = async (httpRequest: any) => {
-//   try {
-//     const { userName, email, password } = req.body;
-//     const user: UserInterface = {
-//       userName,
-//       email: email,
-//       password,
-//     };
-//     if (!userName || !email || !password) throw new Error("invalid params");
-//     await InsertUser(user);
-//     return res.status(200).json({ created: true });
-//   } catch (error) {
-//     return HttpResponse.badRequest(error);
-//   }
-// };
-
-// const logout = (httpRequest) => {
-//   return res.status(200).json({ auth: false });
-// };
-
-// export { create, login, logout };
-
 export default Login;

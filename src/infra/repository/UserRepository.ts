@@ -1,18 +1,16 @@
 import { FindUser, InsertUser } from "../helpers/mongo";
 import UserInterface from "../../model/userModel";
 class UserRepository {
-  async load(email: string) {
-    const user = await FindUser(email);
-    return user;
+  async load(email: string): Promise<any> {
+    return FindUser(email);
   }
-  async insert(userName: string, email: string, password: string) {
+  async insert(userName: string,email: string,password: string): Promise<any> {
     const user: UserInterface = {
       userName,
       email,
       password,
     };
-    const inserted = await InsertUser(user);
-    return inserted;
+    return InsertUser(user);
   }
 }
 
