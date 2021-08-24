@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 import dotEnv from "dotenv";
-import UserInterface from "../model/userModel";
+import UserInterface from "../../model/userModel";
 dotEnv.config();
 
 const URL = process.env.MONGOURL;
@@ -38,11 +38,11 @@ export const InsertUser = async (user: UserInterface) => {
     throw new Error(error);
   }
 };
-export const FindUser = async (user: UserInterface) => {
+export const FindUser = async (email: string) => {
   try {
     const connected = await ConnectDB();
     const filterOne = {
-      email: user.email,
+      email: email,
     };
     const userFound = await connected.findOne(filterOne);
     await client.close();

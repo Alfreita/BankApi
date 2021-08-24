@@ -1,9 +1,9 @@
 import Jwt from "jsonwebtoken";
 import dotEnv from "dotenv";
 import { Request, Response } from "express";
-import HttpResponse from "../presentation/helpers/http-response";
-
+import HttpResponse from "../../presentation/helpers/http-response";
 dotEnv.config();
+
 const secret = process.env.SECRET;
 if (!secret) {
   throw new Error("env undefined");

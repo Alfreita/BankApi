@@ -5,9 +5,9 @@ class Login {
   constructor(authUseCase: any) {
     this.authUseCase = authUseCase;
   }
-  login = async (httpRequest: any) => {
+  handle = async (httpRequest: any) => {
     try {
-      const { email, password } = httpRequest.body;
+      const { email, password } = httpRequest;
       if (!email || !password) throw new Error("invalid params");
       const authUser = await this.authUseCase.auth(email, password);
       return HttpResponse.ok(authUser);

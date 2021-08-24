@@ -1,8 +1,4 @@
-import { FindUser } from "../../repository/mongo";
-import UserInterface from "../../model/userModel";
-import { auth } from "../../security/indexJWT";
-
-class authUseCase {
+class AuthUseCase {
   loadUSerByEmailRepository: any;
   encrypter: any;
   tokenGenerator: any;
@@ -36,4 +32,4 @@ class authUseCase {
   }
 }
 
-export default authUseCase;
+export default AuthUseCase;
