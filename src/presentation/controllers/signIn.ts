@@ -1,7 +1,7 @@
 import AuthUseCase from "../../domain/useCase/authUseCase";
 import HttpResponse from "../helpers/http-response";
 
-class Login {
+class SignIn {
   authUseCase: AuthUseCase;
   constructor(authUseCase: AuthUseCase) {
     this.authUseCase = authUseCase;
@@ -17,4 +17,4 @@ class Login {
     }
   };
 }
-export default Login;
+export default SignIn;

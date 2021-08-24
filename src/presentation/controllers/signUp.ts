@@ -6,16 +6,11 @@ class SignUp {
   constructor(signUpUseCase: SignUpUseCase) {
     this.signUpUseCase = signUpUseCase;
   }
-  create = async (httpRequest: any) => {
+  handle = async (httpRequest: any) => {
     try {
       const { userName, email, password } = httpRequest;
-      const user = {
-        userName,
-        email: email,
-        password,
-      };
       if (!userName || !email || !password) throw new Error("invalid params");
-      this.signUpUseCase.signup(userName, email, password);
+      await this.signUpUseCase.signup(userName, email, password);
       return HttpResponse.ok({ created: true });
     } catch (error) {
       return HttpResponse.badRequest(error);

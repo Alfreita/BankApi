@@ -1,5 +1,5 @@
 import SignupUseCase from "../../domain/useCase/signupUseCase";
-import SignUp from "../../presentation/controllers/signin";
+import SignUp from "../../presentation/controllers/signUp";
 import UserRepository from "../../infra/repository/UserRepository";
 import CryptRepository from "../../infra/repository/CryptRepository";
 
