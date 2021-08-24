@@ -13,7 +13,7 @@ class SignUp {
       await this.signUpUseCase.signup(userName, email, password);
       return HttpResponse.ok({ created: true });
     } catch (error) {
-      return HttpResponse.badRequest(error);
+      return HttpResponse.serverError();
     }
   };
 }

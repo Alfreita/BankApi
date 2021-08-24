@@ -14,12 +14,7 @@ class SignupUseCase {
       email,
       password: await this.encrypter.cryptPassword(password),
     };
-    const inserted = await this.userRepository.insert(
-      user.username,
-      user.email,
-      user.password
-    );
-    return inserted._id;
+    await this.userRepository.insert(user.username, user.email, user.password);
   }
 }
 export default SignupUseCase;
