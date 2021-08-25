@@ -18,7 +18,9 @@ class AuthUseCase {
   async auth(email: string, password: string): Promise<any> {
     const userFound = await this.loadUSerByEmailRepository.load(email);
     if (!userFound) {
-      return null;
+      return {
+        auth: false,
+      };
     }
     const isValid = await this.encrypter.validatecryptography(
       password,
