@@ -18,12 +18,12 @@ const verify = (req: Request, res: Response, next: any) => {
   const token = req.headers["x-access-token"];
   if (!token)
     return res.status(401).json({ auth: false, message: "No token provided." });
-
+  // @ts-ignore
   Jwt.verify(token, secret, function (err, decoded: any) {
     if (err) return HttpResponse.unauthorizeError();
 
-    // se tudo estiver ok, salva no request para uso posterior
-    console.log(decoded.email);
+    // se tudo estiver ok, salva no request para uso posteriorS
+    // @ts-ignore
     req.userEmail = decoded.email;
     next();
   });
