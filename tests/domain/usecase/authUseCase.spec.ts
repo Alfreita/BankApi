@@ -3,19 +3,17 @@ import UserRepository from "../../../src/infra/repository/UserRepository";
 import CryptRepository from "../../../src/infra/repository/CryptRepository";
 import TokenRepository from "../../../src/infra/repository/TokenRepository";
 
-const mockUserRepository = jest.fn(() => {
+const mockUserRepository = jest.fn(async () => {
   return "mockedEmail@mock.com";
 });
-const mockTokenRepository = jest.fn(() => {
+const mockTokenRepository = jest.fn(async () => {
   return true;
 });
-
 jest.mock("../../../src/infra/repository/UserRepository", () => {
   return jest.fn().mockImplementation(() => {
-    return { load: mockUserRepository, insert: mockUserRepository };
+    return { load: mockUserRepository };
   });
 });
-
 jest.mock("../../../src/infra/repository/CryptRepository", () => {
   return jest.fn().mockImplementation(() => {
     return { validatecryptography: mockTokenRepository };
@@ -29,7 +27,6 @@ beforeEach(() => {
   const tokenRepository = new TokenRepository();
   auth = new AuthUseCase(userRepositoryMock, cryptoRepository, tokenRepository);
 });
-
 test("Should Auth user with mocked email", async () => {
   const test = await auth.auth("mockedEmail", "mock1234");
   expect(test.auth).toBe(true);

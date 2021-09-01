@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 import dotEnv from "dotenv";
-import UserInterface from "../../model/userModel";
+
 dotEnv.config();
 
 const URL = process.env.MONGOURL;
