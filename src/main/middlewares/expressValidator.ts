@@ -1,7 +1,12 @@
 import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 
-const validateLogin = [body("email").isEmail(), body("password").exists()];
+const validateSignin = [body("email").isEmail(), body("password").exists()];
+const validateSignUp = [
+  body("email").isEmail(),
+  body("userName").isString().notEmpty(),
+  body("password").exists(),
+];
 const validate = (Req: Request, Res: Response, Next: NextFunction) => {
   const errors = validationResult(Req);
   if (!errors.isEmpty()) {
@@ -10,4 +15,4 @@ const validate = (Req: Request, Res: Response, Next: NextFunction) => {
     Next();
   }
 };
-export { validateLogin, validate };
+export { validateSignin, validateSignUp, validate };

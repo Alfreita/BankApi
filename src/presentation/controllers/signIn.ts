@@ -10,7 +10,6 @@ class SignIn {
   handle = async (httpRequest: any) => {
     try {
       const { email, password } = httpRequest;
-      if (!email || !password) throw new Error("invalid params");
       const authUser = await this.authUseCase.auth(email, password);
       if (!authUser.auth) return HttpResponse.unauthorizeError();
       return HttpResponse.ok(authUser);
