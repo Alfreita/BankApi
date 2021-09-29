@@ -1,5 +1,5 @@
-import { MongoClient } from "mongodb";
 import dotEnv from "dotenv";
+import { MongoClient } from "mongodb";
 
 dotEnv.config();
 
@@ -11,7 +11,7 @@ if (!URL) {
   throw new Error("Error in mongoURL ");
 }
 if (!DBNAME) {
-  throw new Error("Error in mongodb name ");
+  throw new Error('Error in mongodb name ');
 }
 if (!DBCOLECTION) {
   throw new Error("Error in mongodb collection ");
@@ -24,7 +24,7 @@ const ConnectDB = async () => {
     const dbCollection = db.collection(DBCOLECTION);
     return dbCollection;
   } catch (error) {
-    throw new Error(error);
+    throw new Error('Error when trying to connect to dataBase');
   }
 };
 
@@ -35,7 +35,7 @@ export const InsertUser = async (user: any) => {
     await client.close();
   } catch (error) {
     await client.close();
-    throw new Error(error);
+    throw new Error('Error when trying to insert user');
   }
 };
 export const FindUser = async (email: string) => {
@@ -49,6 +49,6 @@ export const FindUser = async (email: string) => {
     return userFound;
   } catch (error) {
     await client.close();
-    throw new Error(error);
+    throw new Error('Error when trying to findUser');
   }
 };
