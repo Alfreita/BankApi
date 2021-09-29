@@ -1,5 +1,4 @@
 import AuthUseCase from "../../domain/useCase/authUseCase";
-
 import HttpResponse from "../helpers/http-response";
 
 class SignIn {
