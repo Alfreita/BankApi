@@ -13,7 +13,7 @@ class SignIn {
       if (!authUser.auth) return HttpResponse.unauthorizeError();
       return HttpResponse.ok(authUser);
     } catch (error) {
-      return HttpResponse.badRequest(error);
+      return HttpResponse.serverError();
     }
   };
 }
